@@ -85,7 +85,10 @@ func NewInfiniBandCollector(logger log.Logger) (Collector, error) {
 		"port_receive_switch_relay_errors_total":     "Number of packets that could not be forwarded by the switch.",
 		"symbol_error_total":                         "Number of minor link errors detected on one or more physical lanes.",
 		"vl15_dropped_total":                         "Number of incoming VL15 packets dropped due to resource limitations.",
-		"port_receive_roce_bytes":                    "Number of RoCE data octets received",
+		"port_data_received_roce_bytes_total":        "Number of RoCE data octets received on this port",
+		"port_transmitted_roce_bytes_total":          "Number of RoCE data octets transmitted on this port",
+		"port_packets_received_roce_total":           "Number of RoCE packets received on this port",
+		"port_packets_transmitted_roce_total":        "Number of RoCE packets transmitted on this port",
 	}
 
 	i.metricDescs = make(map[string]*prometheus.Desc)
@@ -171,7 +174,10 @@ func (c *infinibandCollector) Update(ch chan<- prometheus.Metric) error {
 			c.pushCounter(ch, "symbol_error_total", port.Counters.SymbolError, port.Name, portStr)
 			c.pushCounter(ch, "vl15_dropped_total", port.Counters.VL15Dropped, port.Name, portStr)
 
-			c.pushCounter(ch, "port_receive_roce_bytes", port.HwCounters.RxRoceOnlyBytes, port.Name, portStr)
+			c.pushCounter(ch, "port_data_received_roce_bytes_total", port.HwCounters.RxRoceOnlyBytes, port.Name, portStr)
+			c.pushCounter(ch, "port_transmitted_roce_bytes_total", port.HwCounters.TxRoceOnlyBytes, port.Name, portStr)
+			c.pushCounter(ch, "port_packets_received_roce_total", port.HwCounters.RxRoceOnlyBytes, port.Name, portStr)
+			c.pushCounter(ch, "port_packets_transmitted_roce_total", port.HwCounters.TxRoceOnlyBytes, port.Name, portStr)
 		}
 	}
 
