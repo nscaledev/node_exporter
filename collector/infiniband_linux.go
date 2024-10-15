@@ -84,6 +84,130 @@ func NewInfiniBandCollector(logger *slog.Logger) (Collector, error) {
 		"port_receive_switch_relay_errors_total":     "Number of packets that could not be forwarded by the switch.",
 		"symbol_error_total":                         "Number of minor link errors detected on one or more physical lanes.",
 		"vl15_dropped_total":                         "Number of incoming VL15 packets dropped due to resource limitations.",
+
+		"port_active_ahs":                            "Number of active ahs.",
+		"port_active_cqs":                            "Number of active_cqs.",
+		"port_active_mrs":                            "Number of active_mrs.",
+		"port_active_mws":                            "Number of active_mws.",
+		"port_active_pds":                            "Number of active_pds.",
+		"port_active_qps":                            "Number of active_qps.",
+		"port_active_rc_qps":                         "Number of active_rc_qps.",
+		"port_active_srqs":                           "Number of active_srqs.",
+		"port_active_ud_qps":                         "Number of active_ud_qps.",
+		"port_bad_resp_err":                          "Number of bad_resp_err.",
+		"port_db_fifo_register":                      "Number of db_fifo_register.",
+		"port_duplicate_request":                     "Number of duplicate_requests.",
+		"port_implied_nak_seq_err":                   "Number of implied_nak_seq_err.",
+		"port_lifespan":                              "Lifespan.",
+		"port_local_ack_timeout_err":                 "Number of local_ack_timeout_err.",
+		"port_local_protection_err":                  "Number of local_protection_err.",
+		"port_local_qp_op_err":                       "Number of local_qp_op_err.",
+		"port_max_retry_exceeded":                    "Number of max_retry_exceeded.",
+		"port_mem_mgmt_op_err":                       "Number of mem_mgmt_op_err.",
+		"port_missing_resp":                          "Number of missing_resp.",
+		"port_np_cnp_sent":                           "Number of np_cnp_sent.",
+		"port_np_ecn_marked_roce_packets":            "Number of np_ecn_marked_roce_packets.",
+		"port_oos_drop_count":                        "Number of oos_drop_count.",
+		"port_out_of_buffer":                         "Number of out_of_buffer.",
+		"port_out_of_sequence":                       "Number of out_of_sequence.",
+		"port_pacing_alerts":                         "Number of pacing_alerts.",
+		"port_pacing_complete":                       "Number of pacing_complete.",
+		"port_pacing_reschedule":                     "Number of pacing_reschedule.",
+		"port_packet_seq_err":                        "Number of packet_seq_err.",
+		"port_recoverable_errors":                    "Number of recoverable_errors.",
+		"port_remote_access_err":                     "Number of remote_access_err.",
+		"port_remote_invalid_req_err":                "Number of remote_invalid_req_err.",
+		"port_remote_op_err":                         "Number of remote_op_err.",
+		"port_req_cqe_error":                         "Number of req_cqe_error.",
+		"port_req_cqe_flush_error":                   "Number of req_cqe_flush_error.",
+		"port_req_remote_access_errors":              "Number of req_remote_access_errors.",
+		"port_req_remote_invalid_request":            "Number of req_remote_invalid_request.",
+		"port_res_cmp_err":                           "Number of res_cmp_err.",
+		"port_res_cq_load_err":                       "Number of res_cq_load_err.",
+		"port_res_exceed_max":                        "Number of res_exceed_max.",
+		"port_res_exceeds_wqe":                       "Number of res_exceeds_wqe.",
+		"port_res_invalid_dup_rkey":                  "Number of res_invalid_dup_rkey.",
+		"port_res_irrq_oflow":                        "Number of res_irrq_oflow.",
+		"port_resize_cq_cnt":                         "Number of resize_cq_cnt.",
+		"port_res_length_mismatch":                   "Number of res_length_mismatch.",
+		"port_res_mem_err":                           "Number of res_mem_err.",
+		"port_res_opcode_err":                        "Number of res_opcode_err.",
+		"port_resp_cqe_error":                        "Number of resp_cqe_error.",
+		"port_resp_cqe_flush_error":                  "Number of resp_cqe_flush_error.",
+		"port_resp_local_length_error":               "Number of resp_local_length_error.",
+		"port_resp_remote_access_errors":             "Number of resp_remote_access_errors.",
+		"port_res_rem_inv_err":                       "Number of res_rem_inv_err.",
+		"port_res_rx_domain_err":                     "Number of inbound res_rx_domain_err.",
+		"port_res_rx_invalid_rkey":                   "Number of inbound res_rx_invalid_rkey.",
+		"port_res_rx_no_perm":                        "Number of inbound res_rx_no_perm.",
+		"port_res_rx_pci_err":                        "Number of inbound res_rx_pci_err.",
+		"port_res_rx_range_err":                      "Number of inbound res_rx_range_err.",
+		"port_res_srq_err":                           "Number of res_srq_err.",
+		"port_res_srq_load_err":                      "Number of res_srq_load_err.",
+		"port_res_tx_domain_err":                     "Number of outbound res_tx_domain_err.",
+		"port_res_tx_invalid_rkey":                   "Number of outbound res_tx_invalid_rkey.",
+		"port_res_tx_no_perm":                        "Number of outbound res_tx_no_perm.",
+		"port_res_tx_pci_err":                        "Number of outbound res_tx_pci_err.",
+		"port_res_tx_range_err":                      "Number of outbound res_tx_range_err.",
+		"port_res_unaligned_atomic":                  "Number of res_unaligned_atomic.",
+		"port_res_unsup_opcode":                      "Number of res_unsup_opcode.",
+		"port_res_wqe_format_err":                    "Number of res_wqe_format_err.",
+		"port_rnr_nak_retry_err":                     "Number of rnr_nak_retry_err.",
+		"port_rnr_naks_rcvd":                         "Number of rnr_naks_rcvd.",
+		"port_roce_adp_retrans_to":                   "Number of roce_adp_retrans_to.",
+		"port_roce_adp_retrans":                      "Number of roce_adp_retrans.",
+		"port_roce_slow_restart_cnps":                "Number of roce_slow_restart_cnps.",
+		"port_roce_slow_restart_trans":               "Number of roce_slow_restart_trans.",
+		"port_roce_slow_restart":                     "Number of roce_slow_restart.",
+		"port_rp_cnp_handled":                        "Number of rp_cnp_handled.",
+		"port_rp_cnp_ignored":                        "Number of rp_cnp_ignored.",
+		"port_rx_atomic_requests":                    "Number of rx_atomic_requests.",
+		"port_rx_atomic_req":                         "Number of inbound atomic_req packets.",
+		"port_rx_bytes":                              "Number of inbound data octets rx_bytes.",
+		"port_rx_cnp_pkts":                           "Number of inbound cnp packets.",
+		"port_rx_dct_connect":                        "Number of inbound dct_connect packets.",
+		"port_rx_ecn_marked_pkts":                    "Number of inbound ecn marked packets.",
+		"port_rx_good_bytes":                         "Number of inbound good data octets.",
+		"port_rx_good_pkts":                          "Number of inbound packets rx_good_pkts.",
+		"port_rx_icrc_encapsulated":                  "Number of inbound icrc_encapsulated.",
+		"port_rx_out_of_buffer":                      "Number of inbound out_of_buffer.",
+		"port_rx_pkts":                               "Number of inbound packets.",
+		"port_rx_read_requests":                      "Number of inbound read_requests.",
+		"port_rx_read_req":                           "Number of inbound read_req.",
+		"port_rx_read_resp":                          "Number of inbound read_resp.",
+		"port_rx_roce_discards":                      "Number of inbound roce discards.",
+		"port_rx_roce_errors":                        "Number of inbound roce errors.",
+		"port_rx_roce_good_bytes":                    "Number of inbound roce good data octets",
+		"port_rx_roce_good_pkts":                     "Number of inbound roce good packets.",
+		"port_rx_roce_only_bytes":                    "Number of inbound roce only data octets .",
+		"port_rx_roce_only_pkts":                     "Number of inbound roce only packets.",
+		"port_rx_send_req":                           "Number of inbound send_req.",
+		"port_rx_write_requests":                     "Number of inbound write_requests.",
+		"port_rx_write_req":                          "Number of inbound write_req.",
+		"port_seq_err_naks_rcvd":                     "Number of seq_err_naks_rcvd.",
+		"port_to_retransmits":                        "Number of to_retransmits.",
+		"port_tx_atomic_req":                         "Number of outbound atomic_req.",
+		"port_tx_bytes":                              "Number of outbound data octets.",
+		"port_tx_cnp_pkts":                           "Number of outbound cnp packets.",
+		"port_tx_pkts":                               "Number of outbound packets.",
+		"port_tx_read_req":                           "Number of outbound read_req.",
+		"port_tx_read_resp":                          "Number of outbound read_resp.",
+		"port_tx_roce_discards":                      "Number of outbound roce discards.",
+		"port_tx_roce_errors":                        "Number of outbound roce errors.",
+		"port_tx_roce_only_bytes":                    "Number of roce only outbound data octets",
+		"port_tx_roce_only_pkts":                     "Number of outbound roce only packets.",
+		"port_tx_send_req":                           "Number of outbound send_req.",
+		"port_tx_write_req":                          "Number of outbound write_req.",
+		"port_unrecoverable_err":                     "Number of unrecoverable_err.",
+		"port_watermark_ahs":                         "Number of watermark_ahs.",
+		"port_watermark_cqs":                         "Number of watermark_cqs.",
+		"port_watermark_mrs":                         "Number of watermark_mrs.",
+		"port_watermark_mws":                         "Number of watermark_mws.",
+		"port_watermark_pds":                         "Number of watermark_pds.",
+		"port_watermark_qps":                         "Number of watermark_qps.",
+		"port_watermark_rc_qps":                      "Number of watermark_rc_qps.",
+		"port_watermark_srqs":                        "Number of watermark_srqs.",
+		"port_watermark_ud_qps":                      "Number of watermark_ud_qps.",
 	}
 
 	i.metricDescs = make(map[string]*prometheus.Desc)
@@ -168,6 +292,129 @@ func (c *infinibandCollector) Update(ch chan<- prometheus.Metric) error {
 			c.pushCounter(ch, "port_receive_switch_relay_errors_total", port.Counters.PortRcvSwitchRelayErrors, port.Name, portStr)
 			c.pushCounter(ch, "symbol_error_total", port.Counters.SymbolError, port.Name, portStr)
 			c.pushCounter(ch, "vl15_dropped_total", port.Counters.VL15Dropped, port.Name, portStr)
+			c.pushCounter(ch, "active_ahs", port.HwCounters.ActiveAhs, port.Name, portStr)
+			c.pushCounter(ch, "active_cqs", port.HwCounters.ActiveCqs, port.Name, portStr)
+			c.pushCounter(ch, "active_mrs", port.HwCounters.ActiveMrs, port.Name, portStr)
+			c.pushCounter(ch, "active_mws", port.HwCounters.ActiveMws, port.Name, portStr)
+			c.pushCounter(ch, "active_pds", port.HwCounters.ActivePds, port.Name, portStr)
+			c.pushCounter(ch, "active_qps", port.HwCounters.ActiveQps, port.Name, portStr)
+			c.pushCounter(ch, "active_rc_qps", port.HwCounters.ActiveRcQps, port.Name, portStr)
+			c.pushCounter(ch, "active_srqs", port.HwCounters.ActiveSrqs, port.Name, portStr)
+			c.pushCounter(ch, "active_ud_qps", port.HwCounters.ActiveUdQps, port.Name, portStr)
+			c.pushCounter(ch, "bad_resp_err", port.HwCounters.BadRespErr, port.Name, portStr)
+			c.pushCounter(ch, "db_fifo_register", port.HwCounters.DbFifoRegister, port.Name, portStr)
+			c.pushCounter(ch, "duplicate_request", port.HwCounters.DuplicateRequest, port.Name, portStr)
+			c.pushCounter(ch, "implied_nak_seq_err", port.HwCounters.ImpliedNakSeqErr, port.Name, portStr)
+			c.pushCounter(ch, "lifespan", port.HwCounters.Lifespan, port.Name, portStr)
+			c.pushCounter(ch, "local_ack_timeout_err", port.HwCounters.LocalAckTimeoutErr, port.Name, portStr)
+			c.pushCounter(ch, "local_protection_err", port.HwCounters.LocalProtectionErr, port.Name, portStr)
+			c.pushCounter(ch, "local_qp_op_err", port.HwCounters.LocalQpOpErr, port.Name, portStr)
+			c.pushCounter(ch, "max_retry_exceeded", port.HwCounters.MaxRetryExceeded, port.Name, portStr)
+			c.pushCounter(ch, "mem_mgmt_op_err", port.HwCounters.MemMgmtOpErr, port.Name, portStr)
+			c.pushCounter(ch, "missing_resp", port.HwCounters.MissingResp, port.Name, portStr)
+			c.pushCounter(ch, "np_cnp_sent", port.HwCounters.NpCnpSent, port.Name, portStr)
+			c.pushCounter(ch, "np_ecn_marked_roce_packets", port.HwCounters.NpEcnMarkedRocePackets, port.Name, portStr)
+			c.pushCounter(ch, "oos_drop_count", port.HwCounters.OosDropCount, port.Name, portStr)
+			c.pushCounter(ch, "out_of_buffer", port.HwCounters.OutOfBuffer, port.Name, portStr)
+			c.pushCounter(ch, "out_of_sequence", port.HwCounters.OutOfSequence, port.Name, portStr)
+			c.pushCounter(ch, "pacing_alerts", port.HwCounters.PacingAlerts, port.Name, portStr)
+			c.pushCounter(ch, "pacing_complete", port.HwCounters.PacingComplete, port.Name, portStr)
+			c.pushCounter(ch, "pacing_reschedule", port.HwCounters.PacingReschedule, port.Name, portStr)
+			c.pushCounter(ch, "packet_seq_err", port.HwCounters.PacketSeqErr, port.Name, portStr)
+			c.pushCounter(ch, "recoverable_errors", port.HwCounters.RecoverableErrors, port.Name, portStr)
+			c.pushCounter(ch, "remote_access_err", port.HwCounters.RemoteAccessErr, port.Name, portStr)
+			c.pushCounter(ch, "remote_invalid_req_err", port.HwCounters.RemoteInvalidReqErr, port.Name, portStr)
+			c.pushCounter(ch, "remote_op_err", port.HwCounters.RemoteOpErr, port.Name, portStr)
+			c.pushCounter(ch, "req_cqe_error", port.HwCounters.ReqCqeError, port.Name, portStr)
+			c.pushCounter(ch, "req_cqe_flush_error", port.HwCounters.ReqCqeFlushError, port.Name, portStr)
+			c.pushCounter(ch, "req_remote_access_errors", port.HwCounters.ReqRemoteAccessErrors, port.Name, portStr)
+			c.pushCounter(ch, "req_remote_invalid_request", port.HwCounters.ReqRemoteInvalidRequest, port.Name, portStr)
+			c.pushCounter(ch, "res_cmp_err", port.HwCounters.ResCmpErr, port.Name, portStr)
+			c.pushCounter(ch, "res_cq_load_err", port.HwCounters.ResCqLoadErr, port.Name, portStr)
+			c.pushCounter(ch, "res_exceed_max", port.HwCounters.ResExceedMax, port.Name, portStr)
+			c.pushCounter(ch, "res_exceeds_wqe", port.HwCounters.ResExceedsWqe, port.Name, portStr)
+			c.pushCounter(ch, "res_invalid_dup_rkey", port.HwCounters.ResInvalidDupRkey, port.Name, portStr)
+			c.pushCounter(ch, "res_irrq_oflow", port.HwCounters.ResIrrqOflow, port.Name, portStr)
+			c.pushCounter(ch, "resize_cq_cnt", port.HwCounters.ResizeCqCnt, port.Name, portStr)
+			c.pushCounter(ch, "res_length_mismatch", port.HwCounters.ResLengthMismatch, port.Name, portStr)
+			c.pushCounter(ch, "res_mem_err", port.HwCounters.ResMemErr, port.Name, portStr)
+			c.pushCounter(ch, "res_opcode_err", port.HwCounters.ResOpcodeErr, port.Name, portStr)
+			c.pushCounter(ch, "resp_cqe_error", port.HwCounters.RespCqeError, port.Name, portStr)
+			c.pushCounter(ch, "resp_cqe_flush_error", port.HwCounters.RespCqeFlushError, port.Name, portStr)
+			c.pushCounter(ch, "resp_local_length_error", port.HwCounters.RespLocalLengthError, port.Name, portStr)
+			c.pushCounter(ch, "resp_remote_access_errors", port.HwCounters.RespRemoteAccessErrors, port.Name, portStr)
+			c.pushCounter(ch, "res_rem_inv_err", port.HwCounters.ResRemInvErr, port.Name, portStr)
+			c.pushCounter(ch, "res_rx_domain_err", port.HwCounters.ResRxDomainErr, port.Name, portStr)
+			c.pushCounter(ch, "res_rx_invalid_rkey", port.HwCounters.ResRxInvalidRkey, port.Name, portStr)
+			c.pushCounter(ch, "res_rx_no_perm", port.HwCounters.ResRxNoPerm, port.Name, portStr)
+			c.pushCounter(ch, "res_rx_pci_err", port.HwCounters.ResRxPciErr, port.Name, portStr)
+			c.pushCounter(ch, "res_rx_range_err", port.HwCounters.ResRxRangeErr, port.Name, portStr)
+			c.pushCounter(ch, "res_srq_err", port.HwCounters.ResSrqErr, port.Name, portStr)
+			c.pushCounter(ch, "res_srq_load_err", port.HwCounters.ResSrqLoadErr, port.Name, portStr)
+			c.pushCounter(ch, "res_tx_domain_err", port.HwCounters.ResTxDomainErr, port.Name, portStr)
+			c.pushCounter(ch, "res_tx_invalid_rkey", port.HwCounters.ResTxInvalidRkey, port.Name, portStr)
+			c.pushCounter(ch, "res_tx_no_perm", port.HwCounters.ResTxNoPerm, port.Name, portStr)
+			c.pushCounter(ch, "res_tx_pci_err", port.HwCounters.ResTxPciErr, port.Name, portStr)
+			c.pushCounter(ch, "res_tx_range_err", port.HwCounters.ResTxRangeErr, port.Name, portStr)
+			c.pushCounter(ch, "res_unaligned_atomic", port.HwCounters.ResUnalignedAtomic, port.Name, portStr)
+			c.pushCounter(ch, "res_unsup_opcode", port.HwCounters.ResUnsupOpcode, port.Name, portStr)
+			c.pushCounter(ch, "res_wqe_format_err", port.HwCounters.ResWqeFormatErr, port.Name, portStr)
+			c.pushCounter(ch, "rnr_nak_retry_err", port.HwCounters.RnrNakRetryErr, port.Name, portStr)
+			c.pushCounter(ch, "rnr_naks_rcvd", port.HwCounters.RnrNaksRcvd, port.Name, portStr)
+			c.pushCounter(ch, "roce_adp_retrans_to", port.HwCounters.RoceAdpRetransTo, port.Name, portStr)
+			c.pushCounter(ch, "roce_adp_retrans", port.HwCounters.RoceAdpRetrans, port.Name, portStr)
+			c.pushCounter(ch, "roce_slow_restart_cnps", port.HwCounters.RoceSlowRestartCnps, port.Name, portStr)
+			c.pushCounter(ch, "roce_slow_restart_trans", port.HwCounters.RoceSlowRestartTrans, port.Name, portStr)
+			c.pushCounter(ch, "roce_slow_restart", port.HwCounters.RoceSlowRestart, port.Name, portStr)
+			c.pushCounter(ch, "rp_cnp_handled", port.HwCounters.RpCnpHandled, port.Name, portStr)
+			c.pushCounter(ch, "rp_cnp_ignored", port.HwCounters.RpCnpIgnored, port.Name, portStr)
+			c.pushCounter(ch, "rx_atomic_requests", port.HwCounters.RxAtomicRequests, port.Name, portStr)
+			c.pushCounter(ch, "rx_atomic_req", port.HwCounters.RxAtomicReq, port.Name, portStr)
+			c.pushCounter(ch, "rx_bytes", port.HwCounters.RxBytes, port.Name, portStr)
+			c.pushCounter(ch, "rx_cnp_pkts", port.HwCounters.RxCnpPkts, port.Name, portStr)
+			c.pushCounter(ch, "rx_dct_connect", port.HwCounters.RxDctConnect, port.Name, portStr)
+			c.pushCounter(ch, "rx_ecn_marked_pkts", port.HwCounters.RxEcnMarkedPkts, port.Name, portStr)
+			c.pushCounter(ch, "rx_good_bytes", port.HwCounters.RxGoodBytes, port.Name, portStr)
+			c.pushCounter(ch, "rx_good_pkts", port.HwCounters.RxGoodPkts, port.Name, portStr)
+			c.pushCounter(ch, "rx_icrc_encapsulated", port.HwCounters.RxIcrcEncapsulated, port.Name, portStr)
+			c.pushCounter(ch, "rx_out_of_buffer", port.HwCounters.RxOutOfBuffer, port.Name, portStr)
+			c.pushCounter(ch, "rx_pkts", port.HwCounters.RxPkts, port.Name, portStr)
+			c.pushCounter(ch, "rx_read_requests", port.HwCounters.RxReadRequests, port.Name, portStr)
+			c.pushCounter(ch, "rx_read_req", port.HwCounters.RxReadReq, port.Name, portStr)
+			c.pushCounter(ch, "rx_read_resp", port.HwCounters.RxReadResp, port.Name, portStr)
+			c.pushCounter(ch, "rx_roce_discards", port.HwCounters.RxRoceDiscards, port.Name, portStr)
+			c.pushCounter(ch, "rx_roce_errors", port.HwCounters.RxRoceErrors, port.Name, portStr)
+			c.pushCounter(ch, "rx_roce_good_bytes", port.HwCounters.RxRoceGoodBytes, port.Name, portStr)
+			c.pushCounter(ch, "rx_roce_good_pkts", port.HwCounters.RxRoceGoodPkts, port.Name, portStr)
+			c.pushCounter(ch, "rx_roce_only_bytes", port.HwCounters.RxRoceOnlyBytes, port.Name, portStr)
+			c.pushCounter(ch, "rx_roce_only_pkts", port.HwCounters.RxRoceOnlyPkts, port.Name, portStr)
+			c.pushCounter(ch, "rx_send_req", port.HwCounters.RxSendReq, port.Name, portStr)
+			c.pushCounter(ch, "rx_write_requests", port.HwCounters.RxWriteRequests, port.Name, portStr)
+			c.pushCounter(ch, "rx_write_req", port.HwCounters.RxWriteReq, port.Name, portStr)
+			c.pushCounter(ch, "seq_err_naks_rcvd", port.HwCounters.SeqErrNaksRcvd, port.Name, portStr)
+			c.pushCounter(ch, "to_retransmits", port.HwCounters.ToRetransmits, port.Name, portStr)
+			c.pushCounter(ch, "tx_atomic_req", port.HwCounters.TxAtomicReq, port.Name, portStr)
+			c.pushCounter(ch, "tx_bytes", port.HwCounters.TxBytes, port.Name, portStr)
+			c.pushCounter(ch, "tx_cnp_pkts", port.HwCounters.TxCnpPkts, port.Name, portStr)
+			c.pushCounter(ch, "tx_pkts", port.HwCounters.TxPkts, port.Name, portStr)
+			c.pushCounter(ch, "tx_read_req", port.HwCounters.TxReadReq, port.Name, portStr)
+			c.pushCounter(ch, "tx_read_resp", port.HwCounters.TxReadResp, port.Name, portStr)
+			c.pushCounter(ch, "tx_roce_discards", port.HwCounters.TxRoceDiscards, port.Name, portStr)
+			c.pushCounter(ch, "tx_roce_errors", port.HwCounters.TxRoceErrors, port.Name, portStr)
+			c.pushCounter(ch, "tx_roce_only_bytes", port.HwCounters.TxRoceOnlyBytes, port.Name, portStr)
+			c.pushCounter(ch, "tx_roce_only_pkts", port.HwCounters.TxRoceOnlyPkts, port.Name, portStr)
+			c.pushCounter(ch, "tx_send_req", port.HwCounters.TxSendReq, port.Name, portStr)
+			c.pushCounter(ch, "tx_write_req", port.HwCounters.TxWriteReq, port.Name, portStr)
+			c.pushCounter(ch, "unrecoverable_err", port.HwCounters.UnrecoverableErr, port.Name, portStr)
+			c.pushCounter(ch, "watermark_ahs", port.HwCounters.WatermarkAhs, port.Name, portStr)
+			c.pushCounter(ch, "watermark_cqs", port.HwCounters.WatermarkCqs, port.Name, portStr)
+			c.pushCounter(ch, "watermark_mrs", port.HwCounters.WatermarkMrs, port.Name, portStr)
+			c.pushCounter(ch, "watermark_mws", port.HwCounters.WatermarkMws, port.Name, portStr)
+			c.pushCounter(ch, "watermark_pds", port.HwCounters.WatermarkPds, port.Name, portStr)
+			c.pushCounter(ch, "watermark_qps", port.HwCounters.WatermarkQps, port.Name, portStr)
+			c.pushCounter(ch, "watermark_rc_qps", port.HwCounters.WatermarkRcQps, port.Name, portStr)
+			c.pushCounter(ch, "watermark_srqs", port.HwCounters.WatermarkSrqs, port.Name, portStr)
+			c.pushCounter(ch, "watermark_ud_qps", port.HwCounters.WatermarkUdQps, port.Name, portStr)
 		}
 	}
 
